@@ -121,7 +121,7 @@ def die_roller():
             program_start()
         try:
             guess = int(choice)
-            if guess in range(1, die_sides):
+            if guess in range(1, die_sides + 1):
                 roll = roll_die(die_sides)
                 print(f"\nYou rolled a **{str(roll)}**!")            
                 if guess == roll:
