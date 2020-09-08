@@ -8,7 +8,7 @@ def get_choice():
 
 def flip_coin():
     print("\n    Flipping coin...")
-    for i in range(3):
+    for i in range(2):
         sleep(1)
         print("    .")                     
     return randint(1, 2)  
@@ -18,9 +18,9 @@ def program_start():
     while True:
         print("\n    Would you like to:\n\n\t1. Flip a Coin?\n\t2. Roll a Die?\n\t3. Quit?")
         choice = get_choice()
-        if choice == "1" or "Flip" in choice:
+        if choice == "1" or "Flip" in choice or "Coin" in choice:
             coin_flipper()
-        elif choice == "2" or "Roll" in choice:
+        elif choice == "2" or "Roll" in choice or "Die" in choice:
             die_roll()
         elif choice == "3" or "Quit" in choice:
             print("\nThanks for Playing Coin Flipper!")
@@ -33,7 +33,9 @@ def coin_flipper():
     print("\n***Get ready to flip a coin!***")
     total_flips = 0
     total_heads = 0
+    total_heads_guesses = 0
     total_tails = 0
+    total_tails_guesses = 0
     total_wins = 0
     total_losses = 0    
     while True:
@@ -48,11 +50,13 @@ def coin_flipper():
                 print("Congratulations, your guess was CORRECT!")
                 total_flips += 1
                 total_heads += 1
+                total_heads_guesses += 1
                 total_wins += 1
             elif choice == "2" or "Tails" in choice:
                 print("Sorry, your guess was INCORRECT...")
                 total_flips += 1
-                total_tails += 1
+                total_heads += 1
+                total_tails_guesses += 1
                 total_losses += 1
             else:
                 print("Something went wrong...")
@@ -62,17 +66,21 @@ def coin_flipper():
                 print("Sorry, your guess was INCORRECT...")
                 total_flips += 1
                 total_tails += 1
+                total_heads_guesses += 1
                 total_losses += 1
             if choice == "2" or "Tails" in choice:                                
                 print("Congratulations, your guess was CORRECT!")
                 total_flips += 1
-                total_heads += 1
+                total_tails += 1
+                total_tails_guesses += 1
                 total_wins += 1
         print(f"""
     ******************************
         Total Flips: {total_flips}
         Total Heads: {total_heads}
+        Total Heads Guesses: {total_heads_guesses}
         Total Tails: {total_tails}
+        Total Tails Guesses: {total_tails_guesses}
         Correct Guesses: {total_wins}
         Incorrect Guesses: {total_losses}
         Win Percentage: {round(total_wins / total_flips * 100, 2)}%
